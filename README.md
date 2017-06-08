@@ -18,6 +18,9 @@
   Bytecode einsehen: http://www.javadecompilers.com/
   
 ### Annotation Processing (statisch)
+ - run `mvn clean install` 
+ - run `mvn clean compile -Papt`
+ - copy `target/generated sources` in `de.bk.codegen.apt` and run Main class
  
 #### Lombok
  - `src\main\java\de\bk\codegen\lombok\Pojo.java` 
@@ -27,7 +30,9 @@
  - `src\main\java\de\bk\codegen\bytebuddy\ByteBuddy.java` 
  - run main method, see instance getting created and toString method being called
  
-#### 
+#### Java Agent
+ - run `mvn clean install`
+ - run `mvn clean compile exec:exec -Pagent` and view log for javaagent out print
  
 ## Fazit
 ### Quellcode
