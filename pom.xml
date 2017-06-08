@@ -35,4 +35,42 @@
 			<url>http://projectlombok.org/mavenrepo</url>
 		</repository>
 	</repositories>
+
+	<profiles>
+		<profile>
+			<id>xjc</id>
+			<activation>
+				<property>
+					<name>sample</name>
+					<value>xjc</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- http://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.2/example_xjc_basic.html -->
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>jaxb2-maven-plugin</artifactId>
+						<version>2.2</version>
+						<executions>
+							<execution>
+								<id>xjc</id>
+								<goals>
+									<goal>xjc</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<sources>
+								<source>src/main/resources/person.xsd</source>
+							</sources>
+							<packageName>de.bk.codegen.xjc</packageName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
+
+	</profiles>
 </project>
