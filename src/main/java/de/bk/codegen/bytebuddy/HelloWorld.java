@@ -11,10 +11,10 @@ import static org.junit.Assert.assertThat;
  * @author Benny.Kaiser
  *
  */
-public class ByteBuddy {
+public class HelloWorld {
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
-        ByteBuddy b = new ByteBuddy();
+        HelloWorld b = new HelloWorld();
         b.greet();
     }
 
