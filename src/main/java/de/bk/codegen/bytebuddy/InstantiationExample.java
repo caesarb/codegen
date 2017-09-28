@@ -11,11 +11,10 @@ import static org.junit.Assert.assertThat;
  * @author Benny.Kaiser
  *
  */
-public class HelloWorld {
+public class InstantiationExample {
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
-        HelloWorld b = new HelloWorld();
-        b.greet();
+    	new InstantiationExample().greet();
     }
 
     public void greet() throws InstantiationException, IllegalAccessException {
@@ -27,7 +26,6 @@ public class HelloWorld {
                 .load(getClass().getClassLoader())//
                 .getLoaded();
 
-        System.out.println(dynamicType.newInstance().toString());
         assertThat(dynamicType.newInstance().toString(), is("Hello World!"));
     }
 

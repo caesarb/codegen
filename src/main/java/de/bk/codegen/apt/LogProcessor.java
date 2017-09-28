@@ -39,7 +39,7 @@ public class LogProcessor extends AbstractProcessor {
 					.toString();
 
 			try {
-				writeBuilderFile(className, methodName);
+				writeDelegatorFile(className, methodName);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -49,7 +49,7 @@ public class LogProcessor extends AbstractProcessor {
 		return true;
 	}
 
-	private void writeBuilderFile(String className, String methodName)
+	private void writeDelegatorFile(String className, String methodName)
 			throws IOException {
 
 		String packageName = null;
@@ -59,47 +59,28 @@ public class LogProcessor extends AbstractProcessor {
 		}
 
 		String simpleClassName = className.substring(lastDot + 1);
-		String builderClassName = className + "Delegator";
-		String builderSimpleClassName = builderClassName.substring(lastDot + 1);
+		String delegatorClassName = className + "Delegator";
+		String builderSimpleClassName = delegatorClassName.substring(lastDot + 1);
 
 		//javax.tools : generate source or class decision here
 		JavaFileObject builderFile = processingEnv.getFiler().createSourceFile(
-				builderClassName);
+				delegatorClassName);
 
 		
 		try (PrintWriter out = new PrintWriter(builderFile.openWriter())) {
 
 			if (packageName != null) {
-				out.print("package ");
-				out.print(packageName);
-				out.println(";");
+				out.print("package "+packageName+";");
 				out.println();
 			}
 
-			out.print("public class ");
-			out.print(builderSimpleClassName);
-			out.println(" {");
+			out.println("public class "+builderSimpleClassName+" {");
 			out.println();
-
-			out.print("    private ");
-			out.print(simpleClassName);
-			out.print(" object = new ");
-			out.print(simpleClassName);
-			out.println("();");
+			out.println("    private "+simpleClassName+" object = new "+simpleClassName+"();");
 			out.println();
-
-			out.print("    public ");
-			out.print("void"); // method return type
-			out.print(" ");
-			out.print(methodName);
-
-			out.print("(");
-
-			out.println(" ) {");
+			out.println("    public void "+methodName+"() {");
 			out.println("        long start = System.currentTimeMillis();");
-			out.print("        object.");
-			out.print(methodName);
-			out.println("();");
+			out.println("        object."+methodName+"();");
 			out.println("        long end = System.currentTimeMillis();");
 			out.println("        System.out.println((end-start)+ \"ms\");");
 			out.println("    }");

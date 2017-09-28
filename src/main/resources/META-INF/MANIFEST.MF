@@ -1,1 +1,1 @@
-Premain-Class: de.bk.codegen.bytebuddy.TimerAgent
+Premain-Class: de.bk.codegen.bytebuddy.Agent

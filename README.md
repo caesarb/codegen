@@ -18,16 +18,16 @@
   Bytecode einsehen: http://www.javadecompilers.com/
   
 ### Annotation Processing (statisch)
- - run `mvn clean install` 
- - run `mvn clean compile -Papt`
+ - run `mvn clean install` (this jar is the annotation processor)
+ - run `mvn clean compile -Papt` (to apply annotation processor)
  - copy `target/generated sources` in `de.bk.codegen.apt` and run Main class
  
 #### Lombok
- - `src\main\java\de\bk\codegen\lombok\Pojo.java` 
+ - `src\main\java\de\bk\codegen\lombok\Person.java` 
  - compile and inspect resulting class file
  
 ### ByteBuddy (dynamisch)
- - `src\main\java\de\bk\codegen\bytebuddy\ByteBuddy.java` 
+ - `src\main\java\de\bk\codegen\bytebuddy\InstantiationExample.java` 
  - run main method, see instance getting created and toString method being called
  
 #### Java Agent

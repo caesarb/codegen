@@ -6,7 +6,7 @@ import net.bytebuddy.agent.builder.AgentBuilder;
 import net.bytebuddy.implementation.MethodDelegation;
 import net.bytebuddy.matcher.ElementMatchers;
 
-public class TimerAgent {
+public class Agent {
 	
 	public static void premain(String arguments, Instrumentation instrumentation) {
 		new AgentBuilder.Default()
